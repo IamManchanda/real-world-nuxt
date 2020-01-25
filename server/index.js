@@ -8,10 +8,16 @@ const port = process.env.PORT || 3000;
 app.set("port", port);
 
 // Import and Set Nuxt.js options
-let config = require("../nuxt.config.js");
+const config = require("../nuxt.config.js");
 config.dev = !(process.env.NODE_ENV === "production");
 
-async function start() {
+const bootMockBackend = () => {
+  // JSON Server
+  // https://github.com/typicode/json-server/issues/253#issuecomment-205509836
+  app.use("/api", jsonServer.router("data/db.json"));
+};
+
+const bootFrontend = async () => {
   // Init Nuxt.js
   const nuxt = new Nuxt(config);
 
@@ -21,15 +27,19 @@ async function start() {
     await builder.build();
   }
 
-  // JSON Server
-  // https://github.com/typicode/json-server/issues/253#issuecomment-205509836
-  app.use("/api", jsonServer.router("data/db.json"));
-
   // Give nuxt middleware to express
   app.use(nuxt.render);
+};
+
+const startServer = () => {
+  // Boot Mock Backend
+  bootMockBackend();
+
+  // Boot Frontend
+  bootFrontend();
 
   // Listen the server
   app.listen(port, host);
   console.log(`Server listening on http://${host}:${port}`); // eslint-disable-line no-console
-}
-start();
+};
+startServer();
