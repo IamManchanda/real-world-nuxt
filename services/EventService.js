@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3001/api",
+  baseURL: "https://real-world-nuxt-mock-server.herokuapp.com/api",
   withCredentials: false,
   headers: {
     Accept: "application/json",

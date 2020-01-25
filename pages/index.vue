@@ -21,7 +21,9 @@ export default {
     };
   },
   async asyncData({ $axios }) {
-    const response = await $axios.get("http://localhost:3001/api/events");
+    const response = await $axios.get(
+      "https://real-world-nuxt-mock-server.herokuapp.com/api/events"
+    );
     const { data: events } = response;
     return {
       events
