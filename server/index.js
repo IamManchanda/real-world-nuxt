@@ -11,12 +11,6 @@ app.set("port", port);
 const config = require("../nuxt.config.js");
 config.dev = !(process.env.NODE_ENV === "production");
 
-const bootMockBackend = () => {
-  // JSON Server
-  // https://github.com/typicode/json-server/issues/253#issuecomment-205509836
-  app.use("/api", jsonServer.router("data/db.json"));
-};
-
 const bootFrontend = async () => {
   // Init Nuxt.js
   const nuxt = new Nuxt(config);
@@ -32,9 +26,6 @@ const bootFrontend = async () => {
 };
 
 const startServer = () => {
-  // Boot Mock Backend
-  bootMockBackend();
-
   // Boot Frontend
   bootFrontend();
 

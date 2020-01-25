@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Event Listings</h1>
-    {{ events }}
+    {{ events.length }}
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
     };
   },
   async asyncData({ $axios }) {
-    const response = await $axios.get("http://localhost:3000/api/events");
+    const response = await $axios.get("http://localhost:3001/api/events");
     const { data: events } = response;
     return {
       events

@@ -1,13 +1,13 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "http://localhost:3001/api",
   withCredentials: false,
   headers: {
     Accept: "application/json",
-    "Content-Type": "application/json",
+    "Content-Type": "application/json"
   },
-  timeout: 10000,
+  timeout: 10000
 });
 
 export const getEvents = (perPage, page) =>
