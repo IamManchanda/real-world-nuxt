@@ -1,5 +1,6 @@
 const express = require("express");
 const { Nuxt, Builder } = require("nuxt");
+const jsonServer = require("json-server");
 const app = express();
 const host = process.env.HOST || "127.0.0.1";
 const port = process.env.PORT || 3000;
@@ -20,10 +21,12 @@ async function start() {
     await builder.build();
   }
 
+  // JSON Server
+  // https://github.com/typicode/json-server/issues/253#issuecomment-205509836
+  app.use("/api", jsonServer.router("data/db.json"));
+
   // Give nuxt middleware to express
   app.use(nuxt.render);
-
-  // TODO: https://github.com/typicode/json-server/issues/253#issuecomment-205509836
 
   // Listen the server
   app.listen(port, host);
