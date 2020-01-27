@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://kibanu-mock-server.herokuapp.com/api/101",
+  baseURL: "https://kibanu-mock-server.herokuapp.com/api/101",
   withCredentials: false,
   headers: {
     Accept: "application/json",
