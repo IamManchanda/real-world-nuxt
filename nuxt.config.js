@@ -29,7 +29,11 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/base-components"],
+  plugins: [
+    "~/plugins/base-components",
+    "~/plugins/vuelidate",
+    { src: "~/plugins/datepicker", mode: "client" }
+  ],
 
   /*
    ** Nuxt.js modules
