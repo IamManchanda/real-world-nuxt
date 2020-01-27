@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="icon-container">
     <div class="icon-wrapper">
       <svg class="icon" :width="width" :height="height">
         <use v-bind="svgIcon(name)" />
@@ -18,26 +18,29 @@ export default {
   props: {
     name: {
       type: String,
-      default: "",
+      default: ""
     },
     width: {
       type: [Number, String],
-      default: 24,
+      default: 24
     },
     height: {
       type: [Number, String],
-      default: 24,
-    },
+      default: 24
+    }
   },
   data() {
     return {
-      svgIcon,
+      svgIcon
     };
-  },
+  }
 };
 </script>
 
 <style scoped>
+.icon-container {
+  display: flex;
+}
 .icon-wrapper {
   display: inline-flex;
   align-items: center;
