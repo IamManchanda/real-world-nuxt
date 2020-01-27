@@ -1,3 +1,4 @@
+import { getEvents } from "./services/EventService";
 const pkg = require("./package");
 
 module.exports = {
@@ -67,6 +68,16 @@ module.exports = {
           exclude: /(node_modules)/
         });
       }
+    }
+  },
+
+  /*
+   ** Static Site Generate configuration
+   */
+  generate: {
+    routes: async () => {
+      const { data } = await getEvents();
+      return data.map(event => `/events/${event.id}`);
     }
   }
 };
