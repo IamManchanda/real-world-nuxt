@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import NavBar from "~/components/navigation/NavBar.vue";
+import NavBar from "~/components/navigation/NavBar";
 
 export default {
   head() {

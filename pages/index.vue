@@ -6,7 +6,8 @@
 </template>
 
 <script>
-import EventCard from "~/components/shared/EventCard.vue";
+import EventCard from "~/components/shared/EventCard";
+import { getEvents } from "~/services/EventService";
 
 export default {
   head() {
@@ -22,11 +23,9 @@ export default {
       ]
     };
   },
-  async asyncData({ $axios, error }) {
+  async asyncData({ error }) {
     try {
-      const { data: events } = await $axios.get(
-        "https://real-world-nuxt-mock-server.herokuapp.com/api/events"
-      );
+      const { data: events } = await getEvents();
       return { events };
     } catch (err) {
       error({

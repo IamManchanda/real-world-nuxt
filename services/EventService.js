@@ -10,7 +10,8 @@ const api = axios.create({
   timeout: 10000
 });
 
-export const getEvents = (perPage, page) =>
-  api.get(`/events?_limit=${perPage}&_page=${page}`);
-export const getCurrentEvent = eventId => api.get(`/events/${eventId}`);
+/* export const getEvents = (perPage, page) =>
+  api.get(`/events?_limit=${perPage}&_page=${page}`); */
+export const getEvents = () => api.get("/events");
+export const getCurrentEvent = id => api.get(`/events/${id}`);
 export const postCurrentEvent = event => api.post("/events", event);

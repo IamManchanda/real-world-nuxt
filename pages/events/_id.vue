@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { getCurrentEvent } from "~/services/EventService";
+
 export default {
   head() {
     return {
@@ -33,9 +35,7 @@ export default {
   },
   async asyncData({ $axios, error, params }) {
     try {
-      const { data: event } = await $axios.get(
-        `https://real-world-nuxt-mock-server.herokuapp.com/api/events/${params.id}`
-      );
+      const { data: event } = await getCurrentEvent(params.id);
       return { event };
     } catch (err) {
       error({
