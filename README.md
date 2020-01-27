@@ -1,6 +1,12 @@
-# real-world-nuxt
+# Real World Nuxt.js
 
-> Real World Nuxt.js
+Revised/Learned from
+
+- https://www.vuemastery.com/courses/real-world-vue-js/
+- https://www.vuemastery.com/courses/mastering-vuex/
+- https://www.vuemastery.com/courses/next-level-vue/
+- https://www.vuemastery.com/courses/vue-3-essentials
+- https://www.vuemastery.com/courses/scaling-vue-with-nuxt-js
 
 ## Build Setup
 
