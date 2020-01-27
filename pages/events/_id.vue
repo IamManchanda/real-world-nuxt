@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { getCurrentEvent } from "~/services/EventService";
+import { mapState } from "vuex";
 
 export default {
   head() {
@@ -33,16 +33,22 @@ export default {
       ]
     };
   },
-  async asyncData({ $axios, error, params }) {
+  async fetch({ store, error, params }) {
     try {
-      const { data: event } = await getCurrentEvent(params.id);
-      return { event };
+      await store.dispatch("events/fetchCurrentEvent", {
+        id: params.id
+      });
     } catch (err) {
       error({
         statusCode: err.response.status,
         message: err.response.statusText
       });
     }
+  },
+  computed: {
+    ...mapState({
+      event: state => state.events.event
+    })
   },
   methods: {
     parsedDate(date) {

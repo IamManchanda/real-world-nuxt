@@ -7,7 +7,7 @@
 
 <script>
 import EventCard from "~/components/shared/EventCard";
-import { getEvents } from "~/services/EventService";
+import { mapState } from "vuex";
 
 export default {
   head() {
@@ -23,10 +23,9 @@ export default {
       ]
     };
   },
-  async asyncData({ error }) {
+  async fetch({ store, error }) {
     try {
-      const { data: events } = await getEvents();
-      return { events };
+      await store.dispatch("events/fetchEvents");
     } catch (err) {
       error({
         statusCode: err.response.status,
@@ -36,6 +35,11 @@ export default {
   },
   components: {
     EventCard
+  },
+  computed: {
+    ...mapState({
+      events: state => state.events.events
+    })
   }
 };
 </script>
