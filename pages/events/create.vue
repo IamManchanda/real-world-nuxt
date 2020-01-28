@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-container">
     <h2>Create an Event</h2>
     <template v-if="$v.$anyError">
       <p class="field error -text-error">
