@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-container">
     <div class="event-header">
       <span class="eyebrow">
         @{{ event.time }} on {{ parsedDate(event.date) }}
