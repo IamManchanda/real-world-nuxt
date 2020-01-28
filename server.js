@@ -1,4 +1,5 @@
 const express = require("express");
+const sslRedirect = require("heroku-ssl-redirect");
 const { Nuxt, Builder } = require("nuxt");
 const jsonServer = require("json-server");
 const app = express();
@@ -26,6 +27,9 @@ const bootFrontend = async () => {
 };
 
 const startServer = () => {
+  // enable ssl redirect
+  app.use(sslRedirect(["production"], 301));
+
   // Boot Frontend
   bootFrontend();
 
