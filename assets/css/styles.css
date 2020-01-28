@@ -18,13 +18,18 @@ body {
 .page-container {
   transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
 }
-.page-enter,
-.page-leave-to {
+.page-enter {
   opacity: 0;
+  transform: translate(-30px, 0);
 }
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.5s ease-out;
+  transition: all 0.8s ease-out;
+}
+.page-leave-to,
+.page-leave-active {
+  opacity: 0;
+  transform: translate(30px, 0);
 }
 hr {
   box-sizing: content-box;
