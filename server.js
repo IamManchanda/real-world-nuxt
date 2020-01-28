@@ -1,8 +1,6 @@
 const express = require("express");
 const { Nuxt, Builder } = require("nuxt");
 const jsonServer = require("json-server");
-const { redirectToHTTPS } = require("express-http-to-https");
-
 const app = express();
 const host = process.env.HOST || "127.0.0.1";
 const port = process.env.PORT || 3000;
@@ -28,9 +26,6 @@ const bootFrontend = async () => {
 };
 
 const startServer = () => {
-  // Don't redirect if the hostname is `localhost:port`
-  app.use(redirectToHTTPS([/localhost:(\d{4})/], 301));
-
   // Boot Frontend
   bootFrontend();
 
